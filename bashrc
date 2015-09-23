@@ -1,7 +1,6 @@
 # Aliases
 alias cd..="cd .."
 alias screenshot="xfce4-screenshooter -r -s ~/Pictures/screenshots/"
-alias kkk="echo you fuckin' nazi'"
 
 # Settings for git prompt
 source ~/.git-prompt.sh
