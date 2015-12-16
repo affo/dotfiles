@@ -1,6 +1,10 @@
 # Aliases
 alias cd..="cd .."
 alias screenshot="xfce4-screenshooter -r -s ~/Pictures/screenshots/"
+alias display_polimi="
+    xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x1148 \
+    --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --mode \
+    1920x1080 --pos 1366x0 --rotate left"
 
 # Settings for git prompt
 source ~/.git-prompt.sh
