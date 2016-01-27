@@ -21,3 +21,8 @@ export PS1="$(tput bold)$(tput setaf 2)\u@\h$(tput setaf 6):\W$(tput setaf 3)\$(
 # see https://github.com/chriskempson/base16-shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-tomorrow.dark.sh"
 [[ -s $BASE16_SHELL  ]] && source $BASE16_SHELL
+
+# Colors
+export CLICOLOR=1
+LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export LSCOLORS
