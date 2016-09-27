@@ -1,3 +1,7 @@
+# locale
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Aliases
 alias cd..="cd .."
 alias screenshot="xfce4-screenshooter -r -s ~/Pictures/screenshots/"
@@ -11,7 +15,28 @@ source ~/.git-prompt.sh
 source ~/.git-completion.bash
 
 # My PS1
-export PS1="$(tput bold)$(tput setaf 2)\u@\h$(tput setaf 6):\W$(tput setaf 3)\$(__git_ps1)$(tput setaf 6) \$ $(tput sgr0)"
+export SHORT_PS1=1
+
+function __branch_str {
+    r="$(__git_ps1)"
+    if [[ $SHORT_PS1 -eq 0 ]] && [[ -n "$r" ]]; then
+        r=' ()'
+    fi
+
+    echo "$r"
+}
+
+function reset_ps1 {
+    export SHORT_PS1=1
+    export PS1="$(tput bold)$(tput setaf 2)\u@\h$(tput setaf 6):\W$(tput setaf 3)\$(__branch_str)$(tput setaf 6) \$ $(tput sgr0)"
+}
+
+function short_ps1 {
+    export SHORT_PS1=0
+    export PS1="$(tput bold)$(tput setaf 6)\W$(tput setaf 3)\$(__branch_str)$(tput setaf 6) \$ $(tput sgr0)"
+}
+
+reset_ps1
 
 # Autojump
 # see https://github.com/wting/autojump and install manually
