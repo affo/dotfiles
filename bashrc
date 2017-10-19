@@ -14,8 +14,18 @@ alias display_polimi="
 source ~/.git-prompt.sh
 source ~/.git-completion.bash
 
-# My PS1
+### My PS1
 export SHORT_PS1=1
+
+# colors
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+turquoise=$(tput setaf 6)
+bold=$(tput bold)
+reset=$(tput sgr0)
+
+ps1="\[$bold$green\]\u@\h\[$turquoise\]:\W\[$yellow\]\$(__branch_str)\[$turquoise\] \$ \[$reset\]"
+short_ps1="\[$bold$turquoise\]\W\[$yellow\]\$(__branch_str)\[$turquoise\] \$ \[$reset\]"
 
 function __branch_str {
     r="$(__git_ps1)"
@@ -28,12 +38,12 @@ function __branch_str {
 
 function reset_ps1 {
     export SHORT_PS1=1
-    export PS1="$(tput bold)$(tput setaf 2)\u@\h$(tput setaf 6):\W$(tput setaf 3)\$(__branch_str)$(tput setaf 6) \$ $(tput sgr0)"
+    export PS1=$ps1
 }
 
 function short_ps1 {
     export SHORT_PS1=0
-    export PS1="$(tput bold)$(tput setaf 6)\W$(tput setaf 3)\$(__branch_str)$(tput setaf 6) \$ $(tput sgr0)"
+    export PS1=$short_ps1
 }
 
 reset_ps1
@@ -51,3 +61,4 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-tomorrow.dark.sh"
 export CLICOLOR=1
 LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export LSCOLORS
+
